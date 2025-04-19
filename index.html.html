@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caméras en Direct</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 3px;
+            text-align: center;
+        }
+        .camera-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 3px;
+        }
+        .camera-card {
+            background-color: white;
+            border-radius: 3px;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+            margin: 3px;
+            width: 480px;
+            text-align: center;
+            padding: 3px;
+        }
+        .camera-card img {
+            width: 100%;
+            border-radius: 3px;
+        }
+        .camera-card h3 {
+            margin-top: 3px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Caméras en Direct</h1>
+</header>
+
+<div class="camera-container">
+    <div class="camera-card">
+        <h3>Thionville</h3>
+        <img src="https://webcam.dir-est.fr/app.php/lastimg/52" alt="Caméra Thionville">
+    </div>
+    <div class="camera-card">
+        <h3>Kanfen</h3>
+        <img src="https://webcam.dir-est.fr/app.php/lastimg/19" alt="Caméra Kanfen">
+    </div>
+    <div class="camera-card">
+        <h3>Zoufftgen</h3>
+        <img src="https://webcam.dir-est.fr/app.php/lastimg/56" alt="Caméra Zoufftgen">
+    </div>
+    <div class="camera-card">
+        <h3>Bettembourg</h3>
+        <img src="https://www.cita.lu/info_trafic/cameras/images/cccam_3046.jpg" alt="Caméra Bettembourg">
+    </div>
+    <div class="camera-card">
+        <h3>Hesperange</h3>
+        <img src="https://www.cita.lu/info_trafic/cameras/images/cccam_3012.jpg" alt="Caméra Hesperange">
+    </div>
+    <div class="camera-card">
+        <h3>Croix de Gasperich</h3>
+        <img src="https://www.cita.lu/info_trafic/cameras/images/cccam_41.jpg" alt="Caméra Croix de Gasperich">
+    </div>
+</div>
+
+<script>
+    function refreshImages() {
+        const images = document.querySelectorAll('.camera-card img');
+        images.forEach((img) => {
+            const baseUrl = img.src.split('?')[0];
+            const timestamp = new Date().getTime();
+            img.src = `${baseUrl}?t=${timestamp}`;
+        });
+    }
+
+    setInterval(refreshImages, 60000); // 10 secondes
+</script>
+
+</body>
+</html>
